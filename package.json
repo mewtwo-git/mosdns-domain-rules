@@ -1,0 +1,22 @@
+{
+  "name": "mosdns-domain-rules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "ts-node index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^20.1.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
