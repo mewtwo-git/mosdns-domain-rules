@@ -23,6 +23,11 @@ const txUrls = [
   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.list",
 ];
 
+const _360Urls = [
+  "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/360/360.list",
+  "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Camera360/Camera360.list",
+];
+
 const getUrlRaw = async (url: string): Promise<string> => {
   const resp = await axios.get(url);
   return resp.data;
@@ -41,7 +46,11 @@ const convertRaw = (data: string) => {
   return result;
 };
 
-const main = async (urls: string[], customRules: string[], fileName: string) => {
+const main = async (
+  urls: string[],
+  customRules: string[],
+  fileName: string
+) => {
   const promises = urls.map((url) => getUrlRaw(url));
   const resps = await Promise.all(promises);
   let arrStr: string[] = customRules;
@@ -55,11 +64,11 @@ const main = async (urls: string[], customRules: string[], fileName: string) => 
 };
 
 (async () => {
-  await main(aliUrls, [
-    "domain:mybank.cn"
-  ], "dist/ali.txt");
-  await main(txUrls, [
-    "domain:sogou.com",
-    "domain:sogoucdn.com"
-  ], "dist/tx.txt");
+  await main(aliUrls, ["domain:mybank.cn"], "dist/ali.txt");
+  await main(
+    txUrls,
+    ["domain:sogou.com", "domain:sogoucdn.com"],
+    "dist/tx.txt"
+  );
+  await main(_360Urls, [], "dist/360.txt");
 })();
