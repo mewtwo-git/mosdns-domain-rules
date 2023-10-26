@@ -1,8 +1,6 @@
 import axios from "axios";
 import * as fs from "fs";
 import { writeFileSync } from "fs-extra";
-import { removeSync } from "fs-extra";
-import { pathExistsSync } from "fs-extra";
 import os from "os";
 
 const aliUrls = [
@@ -26,6 +24,10 @@ const txUrls = [
 const _360Urls = [
   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/360/360.list",
   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Camera360/Camera360.list",
+];
+
+const byteDance = [
+  "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ByteDance/ByteDance.list",
 ];
 
 const getUrlRaw = async (url: string): Promise<string> => {
@@ -71,4 +73,5 @@ const main = async (
     "dist/tx.txt"
   );
   await main(_360Urls, [], "dist/360.txt");
+  await main(byteDance, [], "dist/byteDance.txt");
 })();
